@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <cstdlib>  // for exit()
+#include <cstdlib>
 
 using namespace std;
 
@@ -19,22 +19,28 @@ int main() {
     char correctAnswers[NUM_QUESTIONS];
     char studentAnswers[NUM_QUESTIONS];
     int missedQuestions[NUM_QUESTIONS];
-    char missedAnswers[NUM_QUESTIONS][2];  // [][0] = correct, [][1] = student
+    char missedAnswers[NUM_QUESTIONS][2];
 
-    // Load the correct and student answers
+    // This function receives the name of a file containing exam answers.
+    // It also receives the reference to an array to hold the data.
+    // It opens and verifies that the file is opened correctly.If not, the function writes an error message and terminates the program
+    // The data is read from the file and placed in the referenced memory.
     getAnswers("CorrectAnswers.txt", correctAnswers);
     getAnswers("StudentAnswers.txt", studentAnswers);
 
-    // Grade the exam
+    // This function takes as input the answer key array and the student’s answers array.
+    // It returns the number of mismatches(i.e., incorrect answers) found
     int numMissed = gradeExam(correctAnswers, studentAnswers, missedQuestions, missedAnswers);
 
-    // Write the report
+    // This function takes as input the updated incorrect answer array, the number of
+    // incorrect answers and the parallel 2 - D array containing the correct answer and
+    // the student’s incorrect answer.
     writeReport(missedQuestions, numMissed, missedAnswers);
 
     return 0;
 }
 
-// Function to read answers from file into array
+// Read answers from the file into array
 void getAnswers(const string& filename, char answers[]) {
     ifstream inFile(filename);
     if (!inFile) {
@@ -49,13 +55,13 @@ void getAnswers(const string& filename, char answers[]) {
     inFile.close();
 }
 
-// Function to compare answers and record missed questions
+// Compare answers and record missed questions
 int gradeExam(const char correct[], const char student[], int missed[], char missedAnswers[][2]) {
     int numMissed = 0;
 
     for (int i = 0; i < NUM_QUESTIONS; ++i) {
         if (correct[i] != student[i]) {
-            missed[numMissed] = i + 1;  // Question number (1-based)
+            missed[numMissed] = i + 1;
             missedAnswers[numMissed][0] = correct[i];
             missedAnswers[numMissed][1] = student[i];
             ++numMissed;
