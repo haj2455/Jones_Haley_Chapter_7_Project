@@ -29,14 +29,14 @@ int main() {
     }
 
     // Prompt user input
-    cout << "\nEnter a team name to see how many times they won (or enter "quit" to stop): ";
+    cout << "\nEnter a team name to see how many times they won (or enter \"quit\" to stop): ";
     getline(cin, teamName);
 
     while (teamName != "quit") {
         int count = findWinner(teamName, winners);
         cout << teamName << " won the World Series " << count << " time(s)." << endl;
 
-        cout << "\nEnter another team name (or "quit" to stop): ";
+        cout << "\nEnter another team name (or \"quit\" to stop): ";
         getline(cin, teamName);
     }
 
