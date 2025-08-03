@@ -18,7 +18,7 @@ int main() {
     vector<string> winners;
     string teamName;
 
-    // Load team names and winners from files
+    // This function receives the name of a file containing team names
     getTeams("Teams.txt", teams);
     getTeams("WorldSeriesWinners.txt", winners);
 
@@ -60,7 +60,7 @@ void getTeams(const string& filename, vector<string>& names) {
     inFile.close();
 }
 
-// Counts how many times a team appears in the winners vector
+// This function takes the name of a team and the vector of winners
 int findWinner(const string& teamName, const vector<string>& winners) {
     int count = 0;
     for (const string& winner : winners) {
