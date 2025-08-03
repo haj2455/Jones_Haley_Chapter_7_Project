@@ -15,12 +15,12 @@ const string SPACE_LEFT = "SPACE_LEFT";
 const string NO_SPACE = "NO_SPACE";
 
 // Function prototypes
-void initializeBoard(char board[SIZE][SIZE]);
+void initializeBoard(char board[SIZE][SIZE]); // Input is an empty 3 x 3 array
 void displayBoard(const char board[SIZE][SIZE]);
-void placeToken(char token, char board[SIZE][SIZE]);
-void getLocation(int& row, int& col, const char board[SIZE][SIZE]);
-string getBoardState(char token, char board[SIZE][SIZE]);
-string checkForWinner(char token, char board[SIZE][SIZE]);
+void placeToken(char token, char board[SIZE][SIZE]); // Input is the token to be placed (player_1_token or player_2_token) and the board array.
+void getLocation(int& row, int& col, const char board[SIZE][SIZE]); // Input references to row and column and the board array
+string getBoardState(char token, char board[SIZE][SIZE]); // Input is the token to check (player_1_token or player_2_token) and the board array.
+string checkForWinner(char token, char board[SIZE][SIZE]); // Input is token to check (player_1_token or player_2_token) and the board array
 
 int main() {
     char board[SIZE][SIZE];
@@ -31,6 +31,7 @@ int main() {
     initializeBoard(board);
     displayBoard(board);
 
+    // Place token in location (i.e., assign token to board[row][col])
     while (boardState == PLAY) {
         placeToken(player1_token, board);
         displayBoard(board);
@@ -78,7 +79,7 @@ void placeToken(char token, char board[SIZE][SIZE]) {
     board[row][col] = token;
 }
 
-// Prompts user to enter a valid and available location
+// Get row and column numbers from user
 void getLocation(int& row, int& col, const char board[SIZE][SIZE]) {
     bool valid = false;
 
