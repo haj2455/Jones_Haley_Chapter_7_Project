@@ -29,7 +29,7 @@ int main() {
     }
 
     // Prompt user input
-    cout << "\nEnter a team name to see how many times they won (or enter "quit" to stop): "
+    cout << "\nEnter a team name to see how many times they won (or enter "quit" to stop): ";
     getline(cin, teamName);
 
     while (teamName != "quit") {
