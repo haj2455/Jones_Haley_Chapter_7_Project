@@ -99,6 +99,11 @@ void getLocation(int& row, int& col, const char board[SIZE][SIZE]) {
 	}
 }
 
+string getBoardState(char token, char board[SIZE][SIZE])
+{
+	return string();
+}
+
 string checkForWinner(char token, char board[SIZE][SIZE]) {
 	for (int i = 0; i < SIZE; ++i) {
 		if (board[i][0] == token && board[i][1] == token && board[i][2])
